@@ -1,0 +1,14 @@
+.desktopIcon {
+  width: 96px;
+  height: 116px;
+  /* background-color: red; */
+  margin: 0;
+  padding: 0;
+}
+
+.desktopIcon p {
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}

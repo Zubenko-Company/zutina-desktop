@@ -4,6 +4,9 @@ import "./index.css";
 import { LoginScreen } from "./components/login/loginScreen";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { DesktopScreen } from "./components/desktop/desktopScreen";
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,6 +14,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <LoginScreen />
+    <DesktopScreen />
   </React.StrictMode>
 );
 
