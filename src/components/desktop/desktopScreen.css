@@ -1,7 +1,7 @@
 #desktopScreen {
   height: 100vh;
   width: 100vw;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   position: absolute;
   top: 0;
   left: 0;
@@ -11,4 +11,8 @@
 .layout {
   background: none !important;
   /* opacity: 0.3; */
+}
+
+.react-grid-item.react-grid-placeholder {
+  background: none !important;
 }

@@ -1,16 +1,21 @@
 import { FC, useState } from "react";
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { auth } from "./auth";
+import { Alert, Button, Form, InputGroup } from "react-bootstrap";
 import "./loginScreen.css";
-// import inp
-export type LoginScreenProps = {};
 
-export const LoginScreen: FC<LoginScreenProps> = (props) => {
+export const LoginScreen: FC = () => {
   const [userName, setUserName] = useState("");
+  const [logError, setLogError] = useState("");
   const [password, setSetPassword] = useState("");
   const [isDisplayed, setIsDisplayed] = useState(true);
 
   const handleSubmit = () => {
-    setIsDisplayed(!isDisplayed);
+    if (auth()) {
+      setLogError("");
+      setIsDisplayed(!isDisplayed);
+    } else {
+      setLogError("login error");
+    }
   };
 
   const formPos = {
@@ -24,6 +29,7 @@ export const LoginScreen: FC<LoginScreenProps> = (props) => {
   return (
     <div id="loginScreen" style={formPos}>
       <div id="loginForm">
+        {logError !== "" && <Alert variant="danger">{logError}</Alert>}
         <InputGroup className="loginInput p-0">
           <InputGroup.Text id="basic-addon1" className="">
             Username

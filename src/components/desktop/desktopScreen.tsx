@@ -1,17 +1,13 @@
 import { FC } from "react";
 import "./desktopScreen.css";
-import GridLayout, {
-  Layouts,
-  Responsive,
-  WidthProvider,
-} from "react-grid-layout";
+import { Layouts, Responsive, WidthProvider } from "react-grid-layout";
 import { DesktopIcon } from "./icon/desktopicon";
 
 export const DesktopScreen: FC = () => {
   const layout = [
-    { i: "a", x: 0, y: 0, w: 1, h: 1 },
-    { i: "b", x: 1, y: 0, w: 1, h: 1 },
-    { i: "c", x: 1, y: 1, w: 1, h: 1 },
+    { i: "a", x: 0, y: 0, w: 1, h: 1, isResizable: false },
+    { i: "b", x: 0, y: 0, w: 1, h: 1, isResizable: false },
+    { i: "c", x: 0, y: 1, w: 1, h: 1, isResizable: false },
   ];
   const ResponsiveGridLayout = WidthProvider(Responsive);
   const layouts: Layouts = {
