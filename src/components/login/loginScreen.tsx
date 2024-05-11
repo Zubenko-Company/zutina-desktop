@@ -2,15 +2,21 @@ import { FC, useState } from "react";
 import { auth } from "./auth";
 import { Alert, Button, Form, InputGroup } from "react-bootstrap";
 import "./loginScreen.css";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../state/store";
+import { userAuth } from "../../state/user/userSlice";
 
 export const LoginScreen: FC = () => {
   const [userName, setUserName] = useState("");
   const [logError, setLogError] = useState("");
   const [password, setSetPassword] = useState("");
   const [isDisplayed, setIsDisplayed] = useState(true);
+  const isAuth = useSelector((state: RootState) => state.user.isAuth);
+  const dispatch = useDispatch();
 
   const handleSubmit = () => {
     if (auth()) {
+      dispatch(userAuth(true));
       setLogError("");
       setIsDisplayed(!isDisplayed);
     } else {
