@@ -8,6 +8,7 @@ body {
 
   background-position: center;
   background-image: url(./background.jpg);
+  user-select: none;
 }
 
 #root {

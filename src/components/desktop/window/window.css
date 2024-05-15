@@ -1,0 +1,26 @@
+.window {
+  width: 960px;
+  height: 720px;
+  /* border: 1px solid red; */
+  position: absolute;
+  transition: all 0.1s;
+  /* remove */
+}
+
+.windowHead {
+  height: 50px;
+  /* border: 1px solid yellow; */
+  width: 100%;
+  background-color: rgb(29, 29, 29);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.windowContent {
+  /* border: 1px solid green; */
+  background-color: rgba(49, 49, 49, 0.811);
+  width: 100%;
+  height: 670px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
