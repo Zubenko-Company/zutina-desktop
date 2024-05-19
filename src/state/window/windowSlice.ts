@@ -1,32 +1,35 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { WindowPropsType } from "../../components/desktop/window";
+import { WindowPropsType } from "../../components/desktop/window/window";
+import { AppsType } from "../../apps";
+
+type WindowType = AppsType;
 
 export const windowSlice = createSlice({
   name: "user",
   initialState: {
-    openWindows: [] as WindowPropsType[],
+    openWindows: [] as WindowType[],
   },
   reducers: {
     openWindow: (state, action: PayloadAction<WindowPropsType>) => {
-      if (!state.openWindows.find((el) => el.title === action.payload.title)) {
+      if (!state.openWindows.find((el) => el.name === action.payload.name)) {
         state.openWindows.push(action.payload);
       }
     },
-    closeWindow: (state, action: PayloadAction<{ title: string }>) => {
+    closeWindow: (state, action: PayloadAction<{ name: string }>) => {
       const closingWindow = state.openWindows.find(
-        (el) => el.title === action.payload.title
+        (el) => el.name === action.payload.name
       );
       if (closingWindow) {
         state.openWindows = state.openWindows.filter(
-          (win) => win.title !== action.payload.title
+          (win) => win.name !== action.payload.name
         );
       }
     },
-    activeWindow: (state, action: PayloadAction<{ title: string }>) => {
+    activeWindow: (state, action: PayloadAction<{ name: string }>) => {
       state.openWindows = state.openWindows.map((el) => {
         el.isActive = false;
 
-        if (el.title === action.payload.title) {
+        if (el.name === action.payload.name) {
           el.isActive = true;
         }
 

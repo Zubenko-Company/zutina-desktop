@@ -3,22 +3,22 @@ import "./window.css";
 import Draggable from "react-draggable";
 import { useDispatch } from "react-redux";
 import { activeWindow, closeWindow } from "../../../state/window/windowSlice";
+import { AppsType } from "../../../apps";
 
 export type WindowPropsType = {
-  title: string;
-  isActive?: boolean;
-};
+  children?: ChildPropType;
+} & AppsType;
 
 export const Window: FC<WindowPropsType> = (props: WindowPropsType) => {
   const dispatch = useDispatch();
 
   const closeWindowHandler = () => {
-    dispatch(closeWindow({ title: props.title }));
+    dispatch(closeWindow({ name: props.name }));
   };
 
   const activeHandler = () => {
     if (!props.isActive) {
-      dispatch(activeWindow({ title: props.title }));
+      dispatch(activeWindow({ name: props.name }));
     }
   };
 
@@ -34,13 +34,13 @@ export const Window: FC<WindowPropsType> = (props: WindowPropsType) => {
       <div className="window">
         <strong>
           <div className="windowHead">
-            <h3 className="windowTitle">{props.title}</h3>
+            <h3 className="windowTitle">{props.name}</h3>
             <button onClick={closeWindowHandler} className="closeWindowBtn">
               X
             </button>
           </div>
         </strong>
-        <div className="windowContent"></div>
+        <div className="windowContent">{props.children}</div>
       </div>
     </Draggable>
   );

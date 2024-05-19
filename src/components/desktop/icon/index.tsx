@@ -1,24 +1,45 @@
 import { FC } from "react";
 import "./desktopIcon.css";
-import underfind from "./media/underfind.png";
+import gallery from "./media/gallery.png";
+import music from "./media/music.png";
+import friends from "./media/people.png";
 import { useDispatch } from "react-redux";
 import { openWindow } from "../../../state/window/windowSlice";
+import { WindowType } from "../../../apps";
 
 export type DesktopIconProps = {
-  title: string;
+  name: string;
+  type: WindowType;
+  src: string;
 };
 
-export const DesktopIcon: FC<DesktopIconProps> = ({ title }) => {
+export const DesktopIcon: FC<DesktopIconProps> = (props) => {
   const dispatch = useDispatch();
 
   const dbClickHandler = () => {
-    dispatch(openWindow({ title }));
+    dispatch(openWindow(props));
   };
+  console.log(props.src);
+
+  //TODO
+
+  let icon = "";
+  switch (props.name) {
+    case "Картинки":
+      icon = gallery;
+      break;
+    case "Друзья":
+      icon = friends;
+      break;
+    case "Музыка":
+      icon = music;
+      break;
+  }
 
   return (
     <div className="desktopIcon" onDoubleClick={dbClickHandler}>
-      <img src={underfind} />
-      <p>{title}</p>
+      <img src={icon} alt="icon" />
+      <p>{props.name}</p>
     </div>
   );
 };
