@@ -5,15 +5,17 @@ import { DesktopIcon } from "./icon";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
 import { Window } from "./window";
+import { WindowContainer } from "./windowContainer";
+
+const layout: Layout[] = [
+  { i: "a", x: 0, y: 0, w: 1, h: 1, isResizable: false, static: true },
+  { i: "b", x: 0, y: 0, w: 1, h: 1, isResizable: false, static: true },
+  { i: "c", x: 0, y: 1, w: 1, h: 1, isResizable: false, static: true },
+];
 
 export const DesktopScreen: FC = () => {
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
 
-  const layout: Layout[] = [
-    { i: "a", x: 0, y: 0, w: 1, h: 1, isResizable: false, static: true },
-    { i: "b", x: 0, y: 0, w: 1, h: 1, isResizable: false, static: true },
-    { i: "c", x: 0, y: 1, w: 1, h: 1, isResizable: false, static: true },
-  ];
   const ResponsiveGridLayout = WidthProvider(Responsive);
   const layouts: Layouts = {
     lg: layout,
@@ -29,17 +31,16 @@ export const DesktopScreen: FC = () => {
             rowHeight={116}
           >
             <div key="a">
-              <DesktopIcon />
+              <DesktopIcon title="Картинки" />
             </div>
             <div key="b">
-              <DesktopIcon />
+              <DesktopIcon title="Друзья" />
             </div>
             <div key="c">
-              <DesktopIcon />
+              <DesktopIcon title="Музыка" />
             </div>
           </ResponsiveGridLayout>
-          <Window />
-          <Window />
+          <WindowContainer />
         </>
       )}
     </div>

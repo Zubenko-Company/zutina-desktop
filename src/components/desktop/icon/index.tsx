@@ -1,16 +1,24 @@
 import { FC } from "react";
 import "./desktopIcon.css";
 import underfind from "./media/underfind.png";
+import { useDispatch } from "react-redux";
+import { openWindow } from "../../../state/window/windowSlice";
 
-export const DesktopIcon: FC = () => {
+export type DesktopIconProps = {
+  title: string;
+};
+
+export const DesktopIcon: FC<DesktopIconProps> = ({ title }) => {
+  const dispatch = useDispatch();
+
   const dbClickHandler = () => {
-    alert("test");
+    dispatch(openWindow({ title }));
   };
 
   return (
     <div className="desktopIcon" onDoubleClick={dbClickHandler}>
       <img src={underfind} />
-      <p>underfind</p>
+      <p>{title}</p>
     </div>
   );
 };

@@ -6,6 +6,30 @@
   /* remove */
 }
 
+.activeWindow {
+  z-index: 10;
+}
+
+.windowTitle {
+  text-align: center;
+  font-size: 20px;
+  height: 100%;
+  padding-top: 10px;
+  vertical-align: middle;
+}
+
+.closeWindowBtn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgb(201, 77, 0);
+  border: none;
+  margin: 0;
+}
+
 .windowHead {
   height: 50px;
   /* border: 1px solid yellow; */
