@@ -3,7 +3,7 @@ import "./desktopScreen.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
 import { Window } from "./window/window";
-import { Folder } from "./window/folder";
+import { Folder } from "./window/folder/folder";
 import { App } from "./window/app";
 
 export const WindowContainer: FC = () => {
@@ -22,11 +22,7 @@ export const WindowContainer: FC = () => {
             child = <Folder></Folder>;
             break;
         }
-        return (
-          <Window name={win.name} isActive={win.isActive} type={win.type}>
-            {child}
-          </Window>
-        );
+        return <Window {...win}>{child}</Window>;
       })}
     </>
   );

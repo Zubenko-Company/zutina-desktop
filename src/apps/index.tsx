@@ -1,4 +1,9 @@
+import gallery from "./media/gallery.png";
+import music from "./media/music.png";
+import people from "./media/people.png";
+
 export type WindowType = "Folder" | "App";
+
 export type AppsType = {
   name: string;
   type: WindowType;
@@ -10,16 +15,16 @@ export const Icons: AppsType[] = [
   {
     name: "Картинки",
     type: "Folder",
-    src: "/media/gallery.png",
+    src: gallery,
   },
   {
     name: "Друзья",
     type: "Folder",
-    src: "/media/gallery.png",
+    src: people,
   },
   {
     name: "Музыка",
     type: "App",
-    src: "/media/gallery.png",
+    src: music,
   },
 ];

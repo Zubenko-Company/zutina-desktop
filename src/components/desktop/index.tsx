@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import "./desktopScreen.css";
 import { Layout, Layouts, Responsive, WidthProvider } from "react-grid-layout";
-import { DesktopIcon } from "./icon";
+import { DesktopIcon, DesktopIconProps } from "./icon";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
 import { WindowContainer } from "./windowContainer";
@@ -36,11 +36,7 @@ export const DesktopScreen: FC = () => {
               layout.i = String(index);
               return (
                 <div key={index} data-grid={layout}>
-                  <DesktopIcon
-                    name={el.name}
-                    type={el.type}
-                    src={el.src as string}
-                  />
+                  <DesktopIcon {...(el as DesktopIconProps)} />
                 </div>
               );
             })}
