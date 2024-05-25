@@ -7,6 +7,7 @@ import { RootState } from "../../state/store";
 import { WindowContainer } from "./windowContainer";
 import { standartImages } from "../../media/standartImages";
 import { Icons } from "../../apps";
+import { ContextMenu } from "./window/folder/file/contextMenu/contextMenu";
 
 const layout: Layout = {
   i: "a",
@@ -42,6 +43,7 @@ export const DesktopScreen: FC = () => {
             })}
           </ResponsiveGridLayout>
           <WindowContainer />
+          {/* <ContextMenu /> */}
         </>
       )}
     </div>

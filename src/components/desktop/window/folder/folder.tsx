@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "../window.css";
 import { Responsive, WidthProvider } from "react-grid-layout";
-import { mediaType, standartImages } from "../../../../media/standartImages";
+import { mediaType } from "../../../../media/standartImages";
 import { File } from "./file/file";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
