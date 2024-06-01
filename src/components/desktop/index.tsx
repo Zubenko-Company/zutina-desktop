@@ -1,6 +1,12 @@
-import { FC, useEffect } from "react";
+import React, {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import "./desktopScreen.css";
-import { Layout, Layouts, Responsive, WidthProvider } from "react-grid-layout";
+import { Layout, Responsive, WidthProvider } from "react-grid-layout";
 import { DesktopIcon, DesktopIconProps } from "./icon";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
@@ -19,7 +25,23 @@ const layout: Layout = {
   static: true,
 };
 
+type ContextMenuType = { x: number; y: number; isClosed: boolean };
+type ReactDispatchType = Dispatch<SetStateAction<ContextMenuType>>;
+
+export const DesktopContext = React.createContext({
+  contextMenu: {},
+  setContextMenu: {} as ReactDispatchType,
+});
+
 export const DesktopScreen: FC = () => {
+  const [contextMenu, setContextMenu] = useState({
+    x: 0,
+    y: 0,
+    isClosed: true,
+  });
+
+  const value = { contextMenu, setContextMenu };
+
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
 
   const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -29,23 +51,25 @@ export const DesktopScreen: FC = () => {
   }, []);
 
   return (
-    <div id="desktopScreen">
-      {isAuth && (
-        <>
-          <ResponsiveGridLayout className="layout" rowHeight={116}>
-            {Icons.map((el, index) => {
-              layout.i = String(index);
-              return (
-                <div key={index} data-grid={layout}>
-                  <DesktopIcon {...(el as DesktopIconProps)} />
-                </div>
-              );
-            })}
-          </ResponsiveGridLayout>
-          <WindowContainer />
-          {/* <ContextMenu /> */}
-        </>
-      )}
-    </div>
+    <DesktopContext.Provider value={value}>
+      <div id="desktopScreen">
+        {isAuth && (
+          <>
+            <ResponsiveGridLayout className="layout" rowHeight={116}>
+              {Icons.map((el, index) => {
+                layout.i = String(index);
+                return (
+                  <div key={index} data-grid={layout}>
+                    <DesktopIcon {...(el as DesktopIconProps)} />
+                  </div>
+                );
+              })}
+            </ResponsiveGridLayout>
+            <WindowContainer />
+            <ContextMenu {...contextMenu} />
+          </>
+        )}
+      </div>
+    </DesktopContext.Provider>
   );
 };

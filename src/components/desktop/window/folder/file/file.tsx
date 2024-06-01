@@ -1,4 +1,5 @@
-import { FC } from "react";
+import { FC, MouseEvent, useContext } from "react";
+import { DesktopContext } from "../../..";
 
 type FileProps = {
   name: string;
@@ -6,14 +7,16 @@ type FileProps = {
   type: string;
 };
 
-const contextMenuHandler = (e: any) => {
-  e.preventDefault();
-  console.log("Right Click");
-};
-
 export const File: FC<FileProps> = ({ name, iconSrc, type }) => {
+  const { setContextMenu } = useContext(DesktopContext);
+
   return (
-    <div onContextMenu={contextMenuHandler}>
+    <div
+      onContextMenu={(e: MouseEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        setContextMenu({ x: e.pageX, y: e.pageY, isClosed: false });
+      }}
+    >
       <img src={iconSrc} className="imageFile" alt="file preview"></img>
       <p className="fileName">
         {name}.{type}

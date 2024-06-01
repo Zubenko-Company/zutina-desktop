@@ -16,9 +16,16 @@ const options = [
   },
 ];
 
-export const ContextMenu: FC = () => {
+export type ContextMenuType = { x: number; y: number; isClosed: boolean };
+
+export const ContextMenu: FC<ContextMenuType> = (props: ContextMenuType) => {
+  const display = props.isClosed ? "none" : "block";
+
   return (
-    <div className="contextMenu" style={{ left: "0px", top: "0px" }}>
+    <div
+      className="contextMenu"
+      style={{ left: props.x, top: props.y, display }}
+    >
       <ul>
         {options.map((el) => (
           <li onClick={el.handler}>{el.name}</li>

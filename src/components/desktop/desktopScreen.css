@@ -9,15 +9,6 @@
   color: white;
 }
 
-/* #windowLayer {
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  border: 1px solid red;
-  top: 0;
-  left: 0;
-} */
-
 .layout {
   background: none !important;
   /* opacity: 0.3; */
