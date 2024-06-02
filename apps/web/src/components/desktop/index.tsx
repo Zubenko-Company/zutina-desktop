@@ -66,7 +66,7 @@ export const DesktopScreen: FC = () => {
               })}
             </ResponsiveGridLayout>
             <WindowContainer />
-            <ContextMenu {...contextMenu} />
+            {/* <ContextMenu {...contextMenu} /> */}
           </>
         )}
       </div>
