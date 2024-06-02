@@ -15,7 +15,7 @@ import { createTRPCContext } from "./trpc";
   })
     .register(sensible)
     .register(fastifyTRPCPlugin, {
-      prefix: "/api/trpc",
+      prefix: "/trpc",
       trpcOptions: { router: appRouter, createContext: createTRPCContext },
     })
     .register(cors, { origin: "*", credentials: true })

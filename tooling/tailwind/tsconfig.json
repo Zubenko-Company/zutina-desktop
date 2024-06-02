@@ -1,5 +1,5 @@
 {
-  "extends": "@informerus/tsconfig/base.json",
+  "extends": "@zutina/tsconfig/base.json",
   "compilerOptions": {
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
   },
