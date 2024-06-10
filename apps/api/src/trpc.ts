@@ -14,7 +14,7 @@ import superjson from "superjson";
 import { createDatabaseConnection, Entities } from "./db/create";
 
 const db = createDatabaseConnection({
-  host: "127.0.0.1",
+  host: process.env.DBHOST as string,
   port: 5432,
   username: process.env.DBUSERNAME as string,
   password: process.env.DBPASSWORD as string,
