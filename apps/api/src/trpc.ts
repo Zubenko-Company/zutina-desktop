@@ -16,22 +16,10 @@ import { createDatabaseConnection, Entities } from "./db/create";
 const db = createDatabaseConnection({
   host: "127.0.0.1",
   port: 5432,
-  password: "test",
-  username: "test",
+  username: process.env.DBUSERNAME as string,
+  password: process.env.DBPASSWORD as string,
 });
 
-/**
- * 1. CONTEXT
- *
- * This section defines the "contexts" that are available in the backend API.
- *
- * These allow you to access things when processing a request, like the database, the session, etc.
- *
- * This helper generates the "internals" for a tRPC context. The API handler and RSC clients each
- * wrap this and provides the required context.
- *
- * @see https://trpc.io/docs/server/context
- */
 export const createTRPCContext = async ({
   req,
   res,

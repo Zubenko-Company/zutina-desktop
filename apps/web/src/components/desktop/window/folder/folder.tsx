@@ -6,8 +6,6 @@ import { trpc } from "../../../../trpc/server";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
-// const images: mediaType = JSON.parse(localStorage.getItem("media") as string);
-
 export const Folder: FC = () => {
   const { data: images, isLoading: isImagesLoading } =
     trpc.images.all.useQuery();

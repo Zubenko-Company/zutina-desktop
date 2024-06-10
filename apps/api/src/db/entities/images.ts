@@ -1,13 +1,13 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class UserDB extends BaseEntity {
+export class ImagesDB extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "text", unique: true })
+  @Column({ type: "text" })
   name: string;
 
-  @Column({ type: "text" })
-  password: string;
+  @Column()
+  base64: string;
 }

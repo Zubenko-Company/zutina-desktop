@@ -5,6 +5,7 @@ import "./loginScreen.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../state/store";
 import { userAuth } from "../../state/user/userSlice";
+import { trpc } from "../../trpc/server";
 
 export const LoginScreen: FC = () => {
   const [userName, setUserName] = useState("");
@@ -14,7 +15,12 @@ export const LoginScreen: FC = () => {
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
   const dispatch = useDispatch();
 
+  const regMutation = trpc.user.register.useMutation();
+
   const handleSubmit = () => {
+    regMutation.mutate({ login: userName, password });
+    console.log(regMutation.error);
+
     if (auth()) {
       dispatch(userAuth(true));
       setLogError("");

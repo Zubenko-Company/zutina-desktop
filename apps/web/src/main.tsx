@@ -20,6 +20,7 @@ import SuperJSON from "superjson";
 
 import { store } from "./state/store";
 import { trpc } from "./trpc/server";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -51,6 +52,7 @@ const App: FC = () => {
               <LoginScreen />
               <DesktopScreen />
             </div>
+            <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>
         </trpc.Provider>
       </React.StrictMode>

@@ -2,7 +2,8 @@ import type { DataSourceOptions } from "typeorm";
 import { Client } from "pg";
 import { DataSource } from "typeorm";
 
-import { ImagesDB } from "./entities/user";
+import { ImagesDB } from "./entities/images";
+import { UserDB } from "./entities/user";
 
 const thisFileDir = __dirname;
 
@@ -55,4 +56,5 @@ export const createDatabaseConnection = async (
 
 export const Entities = {
   Images: ImagesDB,
+  User: UserDB,
 };
