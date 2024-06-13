@@ -9,13 +9,15 @@
 import type { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify";
 import type _fastify from "fastify";
 import { initTRPC } from "@trpc/server";
+import dotenv from "dotenv";
 import superjson from "superjson";
 
 import { createDatabaseConnection, Entities } from "./db/create";
 
+dotenv.config();
 const db = createDatabaseConnection({
   host: process.env.DBHOST as string,
-  port: 5432,
+  port: Number(process.env.DBPORT),
   username: process.env.DBUSERNAME as string,
   password: process.env.DBPASSWORD as string,
 });
