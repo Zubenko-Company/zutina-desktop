@@ -19,7 +19,7 @@ export const userRouter = {
         throw Error("Invalid password");
       }
 
-      return "suc";
+      return "success";
     }),
   register: publicProcedure
     .input(z.object({ login: z.string(), password: z.string() }))

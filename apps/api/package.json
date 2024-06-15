@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node  ./src/server.ts",
+    "dev": "nodemon --exec ts-node  ./src/server.ts",
     "start": "pnpm run dev",
     "clean": "rm -rf .turbo node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
@@ -28,7 +28,7 @@
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "fastify": "^4.27.0",
-    "nodemon": "^3.1.0",
+    "nodemon": "^3.1.2",
     "pg": "^8.11.5",
     "pino-pretty": "^11.0.0",
     "superjson": "1.13.3",
