@@ -1,8 +1,8 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { Alert, Button, Form, InputGroup } from "react-bootstrap";
-import "./loginScreen.css";
+import "./form.css";
 import { LoginForm } from "./login";
-import { trpc } from "../../trpc/server";
+import { trpc } from "../../../trpc/server";
 
 type RegisterFormPropsType = {
   changeForm: React.Dispatch<React.SetStateAction<JSX.Element>>;

@@ -15,18 +15,3 @@
   transition: all 1s;
   /* position: absolute; */
 }
-
-#loginForm {
-  height: 500px;
-  width: 720px;
-  margin: auto;
-  padding-top: 40vh;
-}
-
-.loginInput {
-  margin-bottom: 20px;
-}
-
-.formButton {
-  margin-bottom: 20px;
-}

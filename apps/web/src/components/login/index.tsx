@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import "./loginScreen.css";
 import { useDispatch } from "react-redux";
 import { userAuth } from "../../state/user/userSlice";
-import { LoginForm } from "./login";
+import { LoginForm } from "./froms/login";
 
 export const LoginScreen: FC = () => {
   const [isDisplayed, setIsDisplayed] = useState(true);

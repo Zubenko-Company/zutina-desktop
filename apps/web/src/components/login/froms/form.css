@@ -1,0 +1,26 @@
+.loginInput {
+  margin-bottom: 20px;
+}
+
+.formButton {
+  margin-bottom: 20px;
+}
+
+#loginForm {
+  height: 500px;
+  width: 720px;
+  margin: auto;
+  padding-top: 40vh;
+  animation: 0.3s linear fomrApearing;
+}
+
+@keyframes fomrApearing {
+  from {
+    /* pushes the sun down past the viewport */
+    opacity: 0;
+  }
+  to {
+    /* returns the sun to its default position */
+    opacity: 1;
+  }
+}

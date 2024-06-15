@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from "react";
-import { auth } from "./auth";
+import { auth } from "../auth";
 import { Alert, Button, Form, InputGroup } from "react-bootstrap";
-import "./loginScreen.css";
-import { trpc } from "../../trpc/server";
+import "./form.css";
+import { trpc } from "../../../trpc/server";
 import { RegisterForm } from "./register";
 
 type LoginFromPropsType = {
@@ -44,7 +44,7 @@ export const LoginForm: FC<LoginFromPropsType> = ({
   };
 
   return (
-    <div id="loginForm">
+    <div id="loginForm" key={Math.random()}>
       {logError !== "" && <Alert variant="danger">{logError}</Alert>}
       <InputGroup className="loginInput p-0">
         <InputGroup.Text id="basic-addon1" className="">
