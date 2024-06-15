@@ -18,7 +18,11 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "paths": {
+      "@/*": ["./src/shadcn/*"]
+    }
   },
   "include": ["src", "typescript"],
   "references": [{ "path": "./tsconfig.node.json" }]

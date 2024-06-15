@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from "react";
-import { auth } from "../auth";
-import { Alert, Button, Form, InputGroup } from "react-bootstrap";
+import { Button, Form, InputGroup } from "react-bootstrap";
 import "./form.css";
 import { trpc } from "../../../trpc/server";
 import { RegisterForm } from "./register";
+import { useToast } from "@/components/ui/use-toast";
 
 type LoginFromPropsType = {
   changeForm: React.Dispatch<React.SetStateAction<JSX.Element>>;
@@ -15,9 +15,8 @@ export const LoginForm: FC<LoginFromPropsType> = ({
   closeLogin,
 }) => {
   const [userName, setUserName] = useState("");
-  const [logError, setLogError] = useState("");
   const [password, setSetPassword] = useState("");
-
+  const { toast } = useToast();
   const loginQuery = trpc.user.login.useMutation();
 
   const handleLogin = () => {
@@ -33,7 +32,11 @@ export const LoginForm: FC<LoginFromPropsType> = ({
     }
 
     if (loginQuery.isError) {
-      setLogError(loginQuery.error.message);
+      toast({
+        variant: "destructive",
+        title: "Login error",
+        description: loginQuery.error.message,
+      });
     }
   }, [loginQuery.status]);
 
@@ -44,8 +47,7 @@ export const LoginForm: FC<LoginFromPropsType> = ({
   };
 
   return (
-    <div id="loginForm" key={Math.random()}>
-      {logError !== "" && <Alert variant="danger">{logError}</Alert>}
+    <div id="loginForm">
       <InputGroup className="loginInput p-0">
         <InputGroup.Text id="basic-addon1" className="">
           Username
